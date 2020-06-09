@@ -16,7 +16,7 @@ namespace function_integration
         {
             double result = 0, x = low;
 
-            for (int i = 0; i < stepCount; i++)
+            for (int i = 1; i < stepCount; i++)
             {
                 result += Y(x - intStep / 2) * intStep;
                 x += intStep;
@@ -29,10 +29,25 @@ namespace function_integration
         {
             double result = 0, x = low;
 
-            for (int i = 0; i < stepCount; i++)
+            for (int i = 1; i < stepCount; i++)
             {
                 result += (Y(x) + Y(x - intStep)) / 2 * intStep;
                 x += intStep;
+            }
+
+            return result;
+        }
+
+        public double Simspon2Method(double low, double intStep, double stepCount)
+        {
+            double result = 0, x = low;
+
+            for (int i = 1; i < stepCount; i++)
+            {
+                double a = Y(x - intStep);
+                double b = 3 * Y((2 * (x - intStep) + x) / 3);
+                double c = 3 * Y((x - intStep + 2 * x) / 3);
+                result += (a + b + c + Y(x)) / 8 * intStep;
             }
 
             return result;

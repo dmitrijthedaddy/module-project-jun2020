@@ -25,12 +25,14 @@ namespace function_integration
             function = new Function1();
             double intStep = (upperBound - lowerBound) / stepCount;
 
-            var midRectResult = function.MidRectMethod(lowerBound, intStep, stepCount);
+            var midRectsResult = function.MidRectMethod(lowerBound, intStep, stepCount);
             var trapeziaResult = function.TrapeziaMethod(lowerBound, intStep, stepCount);
+            var simpson2Result = function.Simspon2Method(lowerBound, intStep, stepCount);
             var analyticResult = function.IntY(lowerBound, upperBound);
 
-            Console.WriteLine("mid rect: {0:f8}", midRectResult);
+            Console.WriteLine("mid rect: {0:f8}", midRectsResult);
             Console.WriteLine("trapezia: {0:f8}", trapeziaResult);
+            Console.WriteLine("simpson2: {0:f8}", simpson2Result);
             Console.WriteLine("analytic: {0:f8}", analyticResult);
         }
     }
