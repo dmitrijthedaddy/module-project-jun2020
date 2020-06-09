@@ -15,7 +15,7 @@ namespace function_integration
 
         public static double Function2(double x)
         {
-            return x * x / Math.Pow(x + 8, 1 / 3);
+            return x * x / Math.Pow(x + 8, (double)1 / 3);
         }
     }
 
@@ -28,7 +28,7 @@ namespace function_integration
 
         public static double FunctionInt2(double x)
         {
-            return Math.Pow(x + 8, 2 / 3) * (15 * x * x - 144 * x + 1728) / 40;
+            return (Math.Pow(x + 8, (double)2 / 3) * (15 * x * x - 144 * x + 1728)) / 40;
         }
     }
 
