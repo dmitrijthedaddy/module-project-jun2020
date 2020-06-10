@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace function_integration
 {
@@ -13,6 +9,7 @@ namespace function_integration
         static void Main(string[] args)
         {
             double lowerBound, upperBound, stepCount;
+            byte choice = 0;
 
             Console.Title = "Проект по модулю, часть 2, вариант 8. Корнев Дмитрий, ЭУ-193631";
             Console.WriteLine("Приближённое вычисление интегралов заданных функций");
@@ -29,7 +26,7 @@ namespace function_integration
                 while (inputFail) 
                 {
                     Console.Write("Выберите пункт: ");
-                    byte choice = Convert.ToByte(Console.ReadLine());
+                    choice = Convert.ToByte(Console.ReadLine());
 
                     switch (choice) 
                     {
@@ -69,10 +66,17 @@ namespace function_integration
                 var simpson2Result = function.Simspon2Method(lowerBound, intStep, stepCount);
                 var analyticResult = function.IntY(lowerBound, upperBound);
 
-                Console.WriteLine("mid rect: {0:f8}", midRectsResult);
-                Console.WriteLine("trapezia: {0:f8}", trapeziaResult);
-                Console.WriteLine("simpson2: {0:f8}", simpson2Result);
-                Console.WriteLine("analytic: {0:f8}", analyticResult);
+                Console.WriteLine("Результаты численного интегрирования\n" +
+                                  "--------------------------------------------------------------------\n" +
+                                  $"Функция {choice}. {function.FuncSpelling()}; " + 
+                                  $"шаг {intStep:f2}; a={lowerBound}; b={upperBound}; s = {analyticResult:f8}");
+                Console.WriteLine($"Метод средних прямоугольников | {midRectsResult,11:f8}, " + 
+                                  $"погрешность: {Math.Abs(analyticResult - midRectsResult),-11:f8}\n" +
+                                  $"Метод трапеций                | {trapeziaResult,11:f8}, " +
+                                  $"погрешность: {Math.Abs(analyticResult - trapeziaResult),-11:f8}\n" +
+                                  $"Метод Симпсона 3/8            | {simpson2Result,11:f8}, " + 
+                                  $"погрешность: {Math.Abs(analyticResult - simpson2Result),-11:f8}");
+                Console.WriteLine("--------------------------------------------------------------------");
             }
         }
     }
