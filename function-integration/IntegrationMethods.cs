@@ -8,6 +8,7 @@ namespace function_integration
         // абстрактные функции: f(x) и F(x)
         abstract public double Y(double x);
         abstract public double IntY(double low, double hi);
+        abstract public string FuncSpelling();
 
         public double MidRectMethod(double low, double intStep, double stepCount)
         { // интегрирование методом трапеций

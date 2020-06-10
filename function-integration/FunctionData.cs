@@ -15,7 +15,7 @@ namespace function_integration
 
         public static double Function2(double x)
         {
-            return x * x / Math.Pow(x + 8, (double)1 / 3);
+            return (x * x) / Math.Pow(x + 8, (double)1 / 3);
         }
     }
 
@@ -43,6 +43,11 @@ namespace function_integration
         {
             return FuncInts.FunctionInt1(hi) - FuncInts.FunctionInt1(low);
         }
+
+        public override string FuncSpelling()
+        {
+            return "y = 8 / (5 + 2*x^2)";
+        }
     }
 
     public class Function2 : IntegrationMethods
@@ -55,6 +60,11 @@ namespace function_integration
         public override double IntY(double low, double hi)
         {
             return FuncInts.FunctionInt2(hi) - FuncInts.FunctionInt2(low);
+        }
+
+        public override string FuncSpelling()
+        {
+            return "y = x^2 / (x + 8)^(1/3)";
         }
     }
 }
