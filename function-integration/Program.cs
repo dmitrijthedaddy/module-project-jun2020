@@ -26,7 +26,14 @@ namespace function_integration
                 while (inputFail) 
                 {
                     Console.Write("Выберите пункт: ");
-                    choice = Convert.ToByte(Console.ReadLine());
+                    try
+                    {
+                        choice = Convert.ToByte(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        choice = 0;
+                    }
 
                     switch (choice) 
                     {
