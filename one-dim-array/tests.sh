@@ -1,4 +1,4 @@
 #!/bin/bash
 
-mcs Tests.cs ArrayKit.cs
-mono Tests.exe
+mcs ArrayKit.cs Tests.cs -out:"one-dim-array.exe"
+mono "one-dim-array.exe"

@@ -6,14 +6,14 @@ namespace one_dim_array
     {
         static void Main()
         {
-            var customArray = new CustomArray();
+            var customArray = new CustomArray(50, 1, 90);
 
             int[] array = customArray.GetArray();
             int[] neighbouringSum = customArray.NeighbouringSum();
 
             for (var i = 0; i < array.Length; i++)
             {
-                Console.Write(array[i] + " ");
+                Console.WriteLine($"array[{i}] = {array[i]}");
             }
 
             Console.WriteLine();
