@@ -6,7 +6,7 @@ namespace one_dim_array
     {
         protected int[] array;
         protected int Size { get; set; }
-        public string SortMode { get; private set; }
+        public string SortMode { get; protected set; }
 
         public CustomArrayBase()
         {
@@ -21,6 +21,7 @@ namespace one_dim_array
 
         public void Sort()
         {
+            SortMode = "Встроенная сортировка";
             Array.Sort(array);
             Array.Reverse(array);
         }
