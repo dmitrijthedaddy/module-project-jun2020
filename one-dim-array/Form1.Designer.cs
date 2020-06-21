@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.elementsCount = new System.Windows.Forms.MaskedTextBox();
@@ -102,6 +102,7 @@
             // 
             // outputBox
             // 
+            this.outputBox.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.outputBox.Location = new System.Drawing.Point(15, 51);
             this.outputBox.Name = "outputBox";
             this.outputBox.Size = new System.Drawing.Size(400, 110);
@@ -116,6 +117,7 @@
             this.createObjectButton.TabIndex = 7;
             this.createObjectButton.Text = "Создать объект";
             this.createObjectButton.UseVisualStyleBackColor = true;
+            this.createObjectButton.Click += new System.EventHandler(this.createObjectButton_Click);
             // 
             // sortButton
             // 
@@ -125,6 +127,7 @@
             this.sortButton.TabIndex = 8;
             this.sortButton.Text = "Сортировать";
             this.sortButton.UseVisualStyleBackColor = true;
+            this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
             // 
             // readFromFileButton
             // 
@@ -134,6 +137,7 @@
             this.readFromFileButton.TabIndex = 9;
             this.readFromFileButton.Text = "Данные из файла";
             this.readFromFileButton.UseVisualStyleBackColor = true;
+            this.readFromFileButton.Click += new System.EventHandler(this.readFromFileButton_Click);
             // 
             // executeButton
             // 
@@ -143,39 +147,40 @@
             this.executeButton.TabIndex = 10;
             this.executeButton.Text = "Выполнить";
             this.executeButton.UseVisualStyleBackColor = true;
+            this.executeButton.Click += new System.EventHandler(this.executeButton_Click);
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea15.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea15);
             this.chart1.Location = new System.Drawing.Point(15, 167);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Name = "Series1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Name = "Series2";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
+            series22.ChartArea = "ChartArea1";
+            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series22.Name = "Series1";
+            series23.ChartArea = "ChartArea1";
+            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series23.Name = "Series2";
+            this.chart1.Series.Add(series22);
+            this.chart1.Series.Add(series23);
             this.chart1.Size = new System.Drawing.Size(400, 175);
             this.chart1.TabIndex = 11;
             this.chart1.Text = "chart1";
             // 
             // chart2
             // 
-            chartArea2.AxisX.MajorGrid.Enabled = false;
-            chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
+            chartArea16.AxisX.MajorGrid.Enabled = false;
+            chartArea16.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea16.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea16);
             this.chart2.Location = new System.Drawing.Point(15, 348);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series3.ChartArea = "ChartArea1";
-            series3.IsValueShownAsLabel = true;
-            series3.Name = "Series1";
-            this.chart2.Series.Add(series3);
+            series24.ChartArea = "ChartArea1";
+            series24.IsValueShownAsLabel = true;
+            series24.Name = "Series1";
+            this.chart2.Series.Add(series24);
             this.chart2.Size = new System.Drawing.Size(400, 175);
             this.chart2.TabIndex = 12;
             this.chart2.Text = "chart2";
@@ -190,12 +195,13 @@
             // 
             // plotHistogramButton
             // 
-            this.plotHistogramButton.Location = new System.Drawing.Point(421, 323);
+            this.plotHistogramButton.Location = new System.Drawing.Point(421, 348);
             this.plotHistogramButton.Name = "plotHistogramButton";
             this.plotHistogramButton.Size = new System.Drawing.Size(143, 23);
             this.plotHistogramButton.TabIndex = 14;
             this.plotHistogramButton.Text = "Гистограмма";
             this.plotHistogramButton.UseVisualStyleBackColor = true;
+            this.plotHistogramButton.Click += new System.EventHandler(this.plotHistogramButton_Click);
             // 
             // statusStrip1
             // 
