@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace one_dim_array
 {
@@ -19,7 +20,7 @@ namespace one_dim_array
             return array;
         }
 
-        public void Sort()
+        public virtual void Sort()
         {
             SortMode = "Встроенная сортировка";
             Array.Sort(array);
@@ -62,6 +63,54 @@ namespace one_dim_array
             }
 
             return randomArray;
+        }
+    }
+
+    class CustomArrayFromFile : CustomArrayBase
+    {
+        public string FilePath { get; private set; }
+
+        public CustomArrayFromFile(string path)
+        {
+            FilePath = path;
+
+            var stream = new StreamReader(FilePath).ReadLine().Split();
+            Size = stream.Length;
+
+            array = new int[Size];
+            
+            for (var i = 0; i < Size; i++)
+            {
+                array[i] = Convert.ToInt32(stream[i]);
+            }
+        }
+
+        override public void Sort()
+        {
+            SortMode = "Selection2";
+
+            // сортировка методом Selection2
+            int i = 0, max, nmax;
+            while (i < Size - 1)
+            {
+                max = array[i];
+                nmax = i;
+                // цикл внутренних итераций
+                int j = i + 1;
+                while (j < Size)
+                {
+                    if (array[j] > max)
+                    {
+                        max = array[j];
+                        nmax = j;
+                    }
+                    j++;
+                }
+                // сохранение текущего элемента
+                array[nmax] = array[i];
+                array[i] = max;
+                i++;
+            }
         }
     }
 }
