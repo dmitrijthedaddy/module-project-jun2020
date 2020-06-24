@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace one_dim_array
 {
@@ -45,14 +39,20 @@ namespace one_dim_array
             return true;
         }
 
+        private void RefreshOutput()
+        {
+            outputBox.Clear();
+            outputBox.AppendText(String.Join(" ", array.GetArray()));
+            chart1.Series[MainSpline].Points.DataBindY(array.GetArray());
+        }
+
         private void createObjectButton_Click(object sender, EventArgs e)
         { // обработчик кнопки "Создать"
             if (!InputErrorBuster()) return;
 
             array = new CustomArray(size, low, high);
-            outputBox.AppendText(String.Join(" ", array.GetArray()));
 
-            chart1.Series[MainSpline].Points.DataBindY(array.GetArray());
+            RefreshOutput();
         }
 
         private void sortButton_Click(object sender, EventArgs e)
@@ -66,7 +66,9 @@ namespace one_dim_array
 
         private void readFromFileButton_Click(object sender, EventArgs e)
         {
+            array = new CustomArrayFromFile("array.txt");
 
+            RefreshOutput();
         }
 
         private void executeButton_Click(object sender, EventArgs e)
@@ -77,7 +79,13 @@ namespace one_dim_array
 
         private void plotHistogramButton_Click(object sender, EventArgs e)
         {
+            var count = 10;
+            double[] x;
+            int[] y;
 
+            Histogram.Plot(array.GetArray(), count, out x, out y);
+
+            chart2.Series["Series1"].Points.DataBindXY(x, y);
         }
     }
 }
