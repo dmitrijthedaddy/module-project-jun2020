@@ -46,7 +46,6 @@ namespace function_integration
                             inputFail = false;
                             break;
                         case 3:
-                            inputFail = false;
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine("До свидания!\n");
                             Console.ResetColor();

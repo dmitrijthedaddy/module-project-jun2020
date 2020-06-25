@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace function_integration
+﻿namespace function_integration
 {
     public abstract class IntegrationMethods
     { // методы: средних прямоугольников, трапеций, Симпсона 3/8
@@ -16,7 +14,7 @@ namespace function_integration
 
             for (int i = 1; i < stepCount; i++)
             {
-                result += Y(x - intStep / 2) * intStep;
+                result += Y(x - (intStep / 2)) * intStep;
                 x += intStep;
             }
 
