@@ -8,7 +8,7 @@ namespace function_integration
 
         static void Main(string[] args)
         {
-            double lowerBound, upperBound, stepCount;
+            double lowerBound = 0, upperBound = 1, stepCount = 20;
             byte choice = 0;
 
             Console.Title = "Проект по модулю, часть 2, вариант 8. Корнев Дмитрий, ЭУ-193631";
@@ -58,12 +58,28 @@ namespace function_integration
                     }
                 }
 
-                Console.Write("\nНижняя граница = ");
-                lowerBound = Convert.ToDouble(Console.ReadLine());
-                Console.Write("Верхняя граница = ");
-                upperBound = Convert.ToDouble(Console.ReadLine());
-                Console.Write("Количество шагов = ");
-                stepCount = Convert.ToDouble(Console.ReadLine());
+                inputFail = true;
+                
+                while (inputFail)
+                {
+                    try 
+                    {
+                        Console.Write("\nНижняя граница = ");
+                        lowerBound = Convert.ToDouble(Console.ReadLine());
+                        Console.Write("Верхняя граница = ");
+                        upperBound = Convert.ToDouble(Console.ReadLine());
+                        Console.Write("Количество шагов = ");
+                        stepCount = Convert.ToDouble(Console.ReadLine());
+
+                        inputFail = false;
+                    }
+                    catch 
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Неверное значение. Повторите ввод.");
+                        Console.ResetColor();
+                    }
+                }
 
                 double intStep = (upperBound - lowerBound) / stepCount;
 
