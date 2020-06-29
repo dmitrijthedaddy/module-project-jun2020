@@ -9,6 +9,9 @@ namespace one_dim_array
         protected int Size { get; set; }
         public string SortMode { get; protected set; }
 
+        public int lowerBound { get; protected set; }
+        public int upperBound { get; protected set; }
+
         public CustomArrayBase()
         {
             array = new int[] {5, 8, 10, 12, 24, 11, 9, 5, 8, 1};
@@ -41,9 +44,7 @@ namespace one_dim_array
     }
 
     class CustomArray : CustomArrayBase
-    {
-        private int lowerBound, upperBound;
-
+    { 
         public CustomArray(int size, int low, int high)
         {
             Size = size;
@@ -82,6 +83,21 @@ namespace one_dim_array
             for (var i = 0; i < Size; i++)
             {
                 array[i] = Convert.ToInt32(stream[i]);
+            }
+
+            lowerBound = array[0];
+            upperBound = array[0];
+            for (var i = 1; i < Size; i++)
+            {
+                if (array[i] > upperBound)
+                {
+                    upperBound = array[i];
+                }
+
+                if (array[i] < lowerBound)
+                {
+                    lowerBound = array[i];
+                }
             }
         }
 

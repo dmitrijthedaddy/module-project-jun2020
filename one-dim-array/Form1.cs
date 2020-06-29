@@ -8,7 +8,7 @@ namespace one_dim_array
         CustomArrayBase array;
         int size = 100, low = 10, high = 99;
 
-        string MainSpline = "Series1", SortedSpline = "Series2";
+        const string MainSpline = "Series1", SortedSpline = "Series2";
 
         public Form1()
         {
@@ -77,6 +77,8 @@ namespace one_dim_array
             try
             { // проверка верности данных в массиве
                 array = new CustomArrayFromFile(fileName);
+                lowerBoundBox.Text = array.lowerBound.ToString();
+                upperBoundBox.Text = array.upperBound.ToString();
             }
             catch
             {
