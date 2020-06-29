@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace one_dim_array
 {
@@ -43,6 +42,7 @@ namespace one_dim_array
         {
             outputBox.Clear();
             outputBox.AppendText(String.Join(" ", array.GetArray()));
+            chart1.Series[SortedSpline].Points.Clear();
             chart1.Series[MainSpline].Points.DataBindY(array.GetArray());
         }
 
@@ -65,27 +65,52 @@ namespace one_dim_array
         }
 
         private void readFromFileButton_Click(object sender, EventArgs e)
-        {
-            array = new CustomArrayFromFile("array.txt");
+        { // обработчик кнопки "Данные из файла"
+            string fileName;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            { // сохранение имени файла
+                fileName = openFileDialog1.FileName;
+            }
+            else return;
+
+            try
+            { // проверка верности данных в массиве
+                array = new CustomArrayFromFile(fileName);
+            }
+            catch
+            {
+                MessageBox.Show($"Данные в файле {fileName} не могут быть использованы для создания массива.\n" +
+                                $"Убедитесь, что числа записаны в одной строке через пробел",
+                                "Ошибка чтения файла");
+
+                return;
+            }
 
             RefreshOutput();
         }
 
         private void executeButton_Click(object sender, EventArgs e)
-        {
+        { // обработчик кнопки "Выполнить"
             outputBox.AppendText($"\n\nМассив сумм соседних элементов оригинального массива\n" 
                                     + String.Join(" ", array.NeighbouringSum()));
         }
 
         private void plotHistogramButton_Click(object sender, EventArgs e)
-        {
-            var count = 10;
+        { // обработчик кнопки "Гистограмма"
+            var count = (int)histogramIntervalsUpDown.Value;
             double[] x;
             int[] y;
 
             Histogram.Plot(array.GetArray(), count, out x, out y);
 
             chart2.Series["Series1"].Points.DataBindXY(x, y);
+        }
+
+        private void TextBoxKeyPressRule(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\b' && e.KeyChar != '-')
+                e.Handled = !Char.IsDigit(e.KeyChar);
         }
     }
 }
