@@ -127,6 +127,7 @@
             // 
             // sortButton
             // 
+            this.sortButton.Enabled = false;
             this.sortButton.Location = new System.Drawing.Point(421, 78);
             this.sortButton.Name = "sortButton";
             this.sortButton.Size = new System.Drawing.Size(143, 23);
@@ -147,6 +148,7 @@
             // 
             // executeButton
             // 
+            this.executeButton.Enabled = false;
             this.executeButton.Location = new System.Drawing.Point(421, 136);
             this.executeButton.Name = "executeButton";
             this.executeButton.Size = new System.Drawing.Size(143, 23);

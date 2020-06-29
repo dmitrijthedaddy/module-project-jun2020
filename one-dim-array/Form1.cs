@@ -44,6 +44,9 @@ namespace one_dim_array
             outputBox.AppendText(String.Join(" ", array.GetArray()));
             chart1.Series[SortedSpline].Points.Clear();
             chart1.Series[MainSpline].Points.DataBindY(array.GetArray());
+
+            sortButton.Enabled = true;
+            executeButton.Enabled = true;
         }
 
         private void createObjectButton_Click(object sender, EventArgs e)
